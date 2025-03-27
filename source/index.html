@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>User Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    #clock {
+      font-size: 48px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .buttons form button {
+      font-size: 18px;
+      padding: 10px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .buttons form button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock">Loading...</div>
+
+  <h2>User Management</h2>
+  <div class="buttons">
+    <form method="post" action="query.php">
+      <button type="submit">Select Data</button>
+    </form>
+
+    <form method="get" action="action.html">
+      <button type="submit">Create / Delete / Change</button>
+    </form>
+  </div>
+
+  <script>
+    function updateClock(){
+        let now = new Date();
+        let hrs = String(now.getHours()).padStart(2, '0');
+        let min = String(now.getMinutes()).padStart(2, '0');
+        let sec = String(now.getSeconds()).padStart(2, '0');
+
+        let timeString = hrs + ":" + min + ":" + sec;
+        document.getElementById('clock').textContent = timeString;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
